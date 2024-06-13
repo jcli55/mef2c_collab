@@ -1,0 +1,123 @@
+groupList <- SimpleList(
+  GC4.Lama3.5T4 = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c('GC4.Lama3.5T4')],
+    RNA = colnames(data)[grep('GC4.Lama3.5T4', data$res0.5.annot)]
+  ),
+  GC8.Eda = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c('GC8.Eda')],
+    RNA = colnames(data)[grep('GC8.Eda', data$res0.5.annot)]
+  ),
+  GC9.active = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c('GC9.active')],
+    RNA = colnames(data)[grep('GC9.active', data$res0.5.annot)]
+  ),
+  PGC20.Vwc2l.Calb1 = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c('PGC20.Vwc2l.Calb1')],
+    RNA = colnames(data)[grep('PGC20.Vwc2l.Calb1', data$res0.5.annot)]
+  ),
+  GC1 = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c('GC1$')],
+    RNA = colnames(data)[grep('GC1$', data$res0.5.annot)]
+  ),
+  PGC11.Kcnmb2.Calb2 = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c('PGC11.Kcnmb2.Calb2')],
+    RNA = colnames(data)[grep('PGC11.Kcnmb2.Calb2', data$res0.5.annot)]
+  ),
+  C17.Grm3 = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c('C17.Grm3')],
+    RNA = colnames(data)[grep('C17.Grm3', data$res0.5.annot)]
+  ),
+  PGC16.Stac.Th = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c('PGC16.Stac.Th')],
+    RNA = colnames(data)[grep('PGC16.Stac.Th', data$res0.5.annot)]
+  ),
+  GC2 = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c('GC2$')],
+    RNA = colnames(data)[grep('GC2$', data$res0.5.annot)]
+  ),
+  C18.Grm3 = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c('C18.Grm3')],
+    RNA = colnames(data)[grep('C18.Grm3', data$res0.5.annot)]
+  ),
+  GC3 = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c('GC3$')],
+    RNA = colnames(data)[grep('GC3$', data$res0.5.annot)]
+  ),
+  PGC15.Kcnmb2.Calb2 = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c('PGC15.Kcnmb2.Calb2')],
+    RNA = colnames(data)[grep('PGC15.Kcnmb2.Calb2', data$res0.5.annot)]
+  ),
+  GC6.Calb2 = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c('GC6.Calb2')],
+    RNA = colnames(data)[grep('GC6.Calb2', data$res0.5.annot)]
+  ),
+  C14.Ndnf = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c('C14.Ndnf')],
+    RNA = colnames(data)[grep('C14.Ndnf', data$res0.5.annot)]
+  ),
+  GC5.Kcnh8 = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c('GC5.Kcnh8')],
+    RNA = colnames(data)[grep('GC5.Kcnh8', data$res0.5.annot)]
+  ),
+  GC7.Ak5= SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c('GC7.Ak5')],
+    RNA = colnames(data)[grep('GC7.Ak5', data$res0.5.annot)]
+  ),
+  C24 = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c('C24$')],
+    RNA = colnames(data)[grep('C24$', data$res0.5.annot)]
+  ),
+  C10.Ndnf = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c('C10.Ndnf')],
+    RNA = colnames(data)[grep('C10.Ndnf', data$res0.5.annot)]
+  ),
+  C25.Vip = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c('C25.Vip')],
+    RNA = colnames(data)[grep('C25.Vip', data$res0.5.annot)]
+  ),
+  C19.Cdh23 = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c('C19.Cdh23')],
+    RNA = colnames(data)[grep('C19.Cdh23', data$res0.5.annot)]
+  ),
+  GC13.transit.Kcnt2 = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c('GC13.transit.Kcnt2')],
+    RNA = colnames(data)[grep('GC13.transit.Kcnt2', data$res0.5.annot)]
+  ),
+  C21 = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c('C21$')],
+    RNA = colnames(data)[grep('C21$', data$res0.5.annot)]
+  ),
+  C22 = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c('C22$')],
+    RNA = colnames(data)[grep('C22$', data$res0.5.annot)]
+  ),
+  GC12.transit = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c('GC12.transit')],
+    RNA = colnames(data)[grep('GC12.transit', data$res0.5.annot)]
+  ),
+  C23.minor = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c('C23.minor')],
+    RNA = colnames(data)[grep('C23.minor', data$res0.5.annot)]
+  )
+)
+
+
+
+
+groupList <- SimpleList(
+  GC = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c("GC6.Calb2", "GC1", "GC4.Lama3.5T4", "GC8.Eda", "GC2", "GC13.transit.Kcnt2",
+                                                       "GC3", "GC12.transit", "GC9.active", "GC5.Kcnh8", "GC7.Ak5")],
+    RNA = colnames(data)[grep('^GC', data$res0.5.annot)]
+  ),
+  PGC = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c("PGC16.Stac.Th", "PGC11.Kcnmb2.Calb2", 
+                                                       "PGC20.Vwc2l.Calb1", "PGC15.Kcnmb2.Calb2")],
+    RNA = colnames(data)[grep('^PGC', data$res0.5.annot)]
+  ),
+  C = SimpleList(
+    ATAC = project$cellNames[project$annotation %in% c("C10.Ndnf", "C19.Cdh23", "C21", "C18.Grm3", "C24", 
+                                                       "C25.Vip", "C22", "C14.Ndnf", "C17.Grm3", "C23.minor")],
+    RNA = colnames(data)[grep('^C', data$res0.5.annot)]
+  )
+)
