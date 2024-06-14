@@ -11,7 +11,7 @@ import multivelo as mv
 # Adapted for Mef2c collab Jean Li 6/10/2024
 
 # Part 2 ------------------------------------
-adata_rna = sc.read_h5ad("/storage/chentemp/u250758/mef2c_collab/data/21d_29d_all/multivelo/adata_rna_GC0_normalized.h5ad")
+adata_rna = sc.read_h5ad("/storage/chentemp/u250758/mef2c_collab/data/21d_29d_all/multivelo/adata_rna_GC0_normalized_downsampled.h5ad")
 adata_atac = sc.read_h5ad("/storage/chentemp/u250758/mef2c_collab/data/21d_29d_all/multivelo/adata_atac_normalized.h5ad")
 
 # Read in Seurat WNN neighbors.
@@ -57,8 +57,8 @@ scv.pp.neighbors(adata_result)
 mv.velocity_graph(adata_result)
 mv.latent_time(adata_result)
 
-mv.velocity_embedding_stream(adata_result, basis='umap', color='majorclass', save='velocity_stream.png')
-scv.pl.scatter(adata_result, color='latent_time', color_map='gnuplot', size=80, save='latent_time.png')
-
 # Save the result for use later on
 adata_result.write("/storage/chentemp/u250758/mef2c_collab/data/21d_29d_all/multivelo/multivelo_result.h5ad")
+
+mv.velocity_embedding_stream(adata_result, basis='umap', color='sampleid', save='velocity_stream.png')
+scv.pl.scatter(adata_result, color='latent_time', color_map='gnuplot', size=80, save='latent_time.png')

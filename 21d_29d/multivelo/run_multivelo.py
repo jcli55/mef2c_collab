@@ -96,10 +96,10 @@ mv.tfidf_norm(adata_atac)
 
 # Subset cells and genes (to reduce runtime and memory requirements)
 sc.pp.highly_variable_genes(adata_rna, flavor="seurat_v3", n_top_genes=2000, subset=True)
-#sc.pp.subsample(adata_rna, n_obs=10000)
+sc.pp.subsample(adata_rna, n_obs=10000)
 
 # Another round of subset to get atac to match
-#shared_cells = pd.Index(np.intersect1d(adata_rna.obs_names, adata_atac.obs_names))
+shared_cells = pd.Index(np.intersect1d(adata_rna.obs_names, adata_atac.obs_names))
 shared_genes = pd.Index(np.intersect1d(adata_rna.var_names, adata_atac.var_names))
 
 adata_rna = adata_rna[shared_cells, shared_genes]
@@ -119,7 +119,7 @@ for i in range(1, len(adata_rna)):
 # Set the umap
 adata_rna.obsm['X_umap'] = array
 
-adata_rna.write("/storage/chentemp/u250758/mef2c_collab/data/21d_29d_all/multivelo/adata_rna_GC0_normalized.h5ad")
+adata_rna.write("/storage/chentemp/u250758/mef2c_collab/data/21d_29d_all/multivelo/adata_rna_GC0_normalized_downsampled.h5ad")
 adata_atac.write("/storage/chentemp/u250758/mef2c_collab/data/21d_29d_all/multivelo/adata_atac_normalized.h5ad")
 
 # Generate the filtered cells txt for the R script
