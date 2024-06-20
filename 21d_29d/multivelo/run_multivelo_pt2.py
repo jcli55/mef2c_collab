@@ -38,27 +38,41 @@ adata_result = mv.recover_dynamics_chrom(adata_rna,
                                          n_anchors=500, 
                                         )
 
-# Transfer some metadata labels to the object
-# metadata = pd.read_csv('/storage/singlecell/jeanl/organoid/csv/metadata_clean.csv', index_col = 0)
-# class_list = []
-# subclass_list = []
-# age_list = []
-# for barcode in adata_result.obs_names:
-#     class_list.append(metadata.loc[barcode, 'majorclass'])
-#     subclass_list.append(metadata.loc[barcode, 'subclass'])
-#     age_list.append(metadata.loc[barcode, 'age'])
-# adata_result.obs['class'] = class_list
-# adata_result.obs['subclass'] = subclass_list
-# adata_result.obs['age'] = age_list
-
 # Plot velocity stream and latent time
 scv.pp.neighbors(adata_result)
 
 mv.velocity_graph(adata_result)
 mv.latent_time(adata_result)
 
+# Add some metadata labels to the object
+age = []
+sex = []
+geno = []
+for sam in adata_result.obs.sampleid:
+    age.append('21d') if '21d' in sam else age.append('29d')
+    sex.append('f') if '_f_' in sam else sex.append('m')
+    geno.append('con') if 'con' in sam else geno.append('ko')
+adata_result.obs['age'] = age
+adata_result.obs['sex'] = sex
+adata_result.obs['geno'] = geno
+
+stage = []
+early_cutoff = np.quantile(adata_result.obs.latent_time, 0.05)
+late_cutoff = np.quantile(adata_result.obs.latent_time, 0.95)
+# The cutoff values are the 0.05 and 0.95 quartile's repectively for latent time
+for i in adata_result.obs.latent_time:
+    if i < early_cutoff:
+        stage.append('early')
+    elif i > late_cutoff:
+        stage.append('late')
+    else:
+        stage.append('intermediate')
+adata_result.obs['development_stage'] = stage
+
 # Save the result for use later on
 adata_result.write("/storage/chentemp/u250758/mef2c_collab/data/21d_29d_all/multivelo/multivelo_result.h5ad")
+adata_result.obs.to_csv("/storage/chentemp/u250758/mef2c_collab/data/21d_29d_all/multivelo/metadata.csv")
 
+sc.pl.umap(adata_result, color=['sampleid', 'age', 'sex', 'geno', 'development_stage'], frameon=False, ncols=2, size=40, save='_multivelo_metadata.png')
 mv.velocity_embedding_stream(adata_result, basis='umap', color='sampleid', save='velocity_stream.png')
 scv.pl.scatter(adata_result, color='latent_time', color_map='gnuplot', size=80, save='latent_time.png')
