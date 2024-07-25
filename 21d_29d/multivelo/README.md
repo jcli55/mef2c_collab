@@ -1,5 +1,5 @@
 Pipeline for running Multivelo on Cellranger Multiome output:
-1. run_velocyto.sh - First need to run velocyto to get spliced/unspliced rna .loom files
+1. run_velocyto.sh - First need to run velocyto to get spliced/unspliced rna .loom files.
    NOTE: If an error is encountered that suggests sorting the bam files manually using samtools, run the following scripts in order:
      samtools_sort.sh -> rename.sh -> (mv_bam.sh if necessary, moves the sorted renamed bam files to the respective Cellranger outs directory). Then try run_velocyto.sh again.
 2. merge_loom.py - merges the created .loom files
